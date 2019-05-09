@@ -1,0 +1,17 @@
+body {
+    background: url("https://www.ojdo.de/wp/wp-content/gallery/red-blurry-wallpapers/red-horizontal-blur.jpg") no-repeat;
+    background-size: 100% 400px;
+}
+#table{
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+th.header{
+    background: rgb(0, 128,0);
+    opacity: 0.25;
+}
+
+
