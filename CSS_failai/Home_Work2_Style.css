@@ -1,17 +1,48 @@
 body {
-    background: url("https://www.ojdo.de/wp/wp-content/gallery/red-blurry-wallpapers/red-horizontal-blur.jpg") no-repeat;
+    background: url("https://i2.wp.com/www.123freevectors.com/wp-content/original/113806-cool-orange-horizontal-stripes-background-vector.jpg?w=800&q=95") no-repeat;
     background-size: 100% 400px;
 }
 #table{
-    width: 50%;
+    width: 20%;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    line-height: 3.5;
+    border-collapse: collapse;
+}
+th, td {
+    padding-left: 30px;
 }
 
 th.header{
-    background: rgb(0, 128,0);
-    opacity: 0.25;
+    background: rgba(0,128,0,0.45);
+    color: white;
+    font-weight: bold;
+    text-align: left;
+
 }
 
+.Border-design {
+    border: grey 1px solid;
+    border-bottom: grey solid 3px;
+}
+
+.No-Top-Border{
+    border-top: none;
+}
+
+.No-Left-Border{
+    border-left: none;
+}
+
+td.row-design-1{
+
+    color: grey;
+}
+
+td.row-design-2{
+    background: white;
+    color: blue;
+
+}
 
