@@ -3,7 +3,7 @@ body {
     background-size: 100% 400px;
 }
 #table{
-    width: 20%;
+    width: 30%;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -11,7 +11,7 @@ body {
     border-collapse: collapse;
 }
 th, td {
-    padding-left: 30px;
+    padding-left: 15px;
 }
 
 th.header{
