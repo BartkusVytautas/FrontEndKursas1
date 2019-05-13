@@ -1,23 +1,24 @@
-body{
-    margin: 0;
-    padding: 0;
-    margin-top: 20px;
+
+/*Global*/
+body {
+    /*margin:0;*/
+    /*padding:0;*/
 }
-.footer {
-    height: 35px;
-    /*margin: 0;*/
+ul {
+    list-style: none;
+    color: blue;
 }
 
-
-
-.container{
+/*Header*/
+header#header-container{
     width: 60%;
     height: 100px;
     margin: auto;
     background-color: black;
     position: relative;
 }
-.header-design{
+
+.header-design {
     margin: 0;
     color: white;
     position: absolute;
@@ -25,41 +26,45 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
-.section{
+/*Section*/
+
+div#section-container{
     width: 60%;
     margin: auto;
     height: 350px;
-    box-sizing: border-box;
-
-
 }
 
-ul {
-    list-style: none;
-    color: blue;
-}
-
-.section-1 {
+div#left-section{
     width: 40%;
     height: 100%;
-    border: solid black 1px;
+    border: solid black 2px;
     border-bottom: none;
     border-top: none;
     float: left;
     box-sizing: border-box;
 }
 
-.section-2{
+
+div#right-section{
     width: 60%;
     height: 100%;
     float: left;
-    border-right: black 1px solid;
+    border-right: black 2px solid;
     box-sizing: border-box;
 }
 
-.padding {
+.padding{
     padding: 20px 10px 20px 10px;
+}
+
+/*Footer*/
+
+footer#footer-container{
+    width: 60%;
+    height: 60px;
+    margin: auto;
+    background-color: black;
+    position: relative;
 }
