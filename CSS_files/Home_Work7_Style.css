@@ -9,8 +9,20 @@ html, body{
 
     height: 100%;
     font-family: 'Encode Sans Condensed', sans-serif;
-    font-size: 40px;
 
+}
+
+h1,h2,h4,p{
+    padding-top: 50px;
+    padding-bottom: 35px;
+    padding-right: 10px;
+
+}
+.align {
+    margin: auto;
+}
+.grey{
+    color: dimgrey;
 }
 /*Header*/
 
@@ -24,7 +36,9 @@ header{
 }
 
 div.header-text-design{
+    font-size:calc(12px + 2vw);
     color: white;
+    text-align: center;
     position: absolute;
     top: 5%;
     left: 50%;
@@ -35,44 +49,221 @@ div.header-text-design{
 
 section.container-1{
     margin: 0;
-    background-color: lightpink;
+    background-color: lightsteelblue;
     width: 100%;
     min-height: 400px;
+    overflow: hidden;
+    position: relative;
 
 
 
 }
 
 div.section-1{
+    margin: auto;
     width: 60%;
-    margin: 0 auto;
     text-align: center;
+    font-size:calc(12px + 1.5vw);
     color: dimgrey;
+
 
 }
 img{
     width: 100%;
-    margin: 40px;
+
 }
 
 p.italic{
     color: black;
     font-style: italic;
-    font-size: 20px;
+    font-size:calc(12px + 0.5vw);
     line-height: 2;
+    text-align: justify-all;
 
 
 }
 button.button-1{
+    margin-bottom: 5%;
     font-size: 50%;
     background-color: black;
     color: white;
     border: none;
-    border-radius: 10px;
-    width: 240px ;
-    height: 60px;
-    margin: 75px;
+    border-radius: 0.5vw;
+    width: 12vw;
+    height: 4vw;
+
+
 }
+
+button.button-1:hover{
+    background-color: darkgrey;
+    color: black;
+}
+
+/*Section-2*/
+
+section.section-2{
+    margin: 0;
+    height: 100%;
+    background: url("https://cdn0.weddingwire.com/img_g/editorial-images-2018/3-march/sam/moody-wedding-colors/0-hero-revel-petals-1.jpg") no-repeat center;
+    background-size: cover;
+    position: relative;
+
+}
+
+div.header-text-design-2{
+    margin: 0;
+    font-size:calc(12px + 2vw);
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+
+}
+
+
+
+
+/*Section-3*/
+
+section.container-2 {
+    margin: 0;
+    background-color: lightsteelblue;
+    width: 100%;
+    min-height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+div.section-2 {
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    font-size: calc(12px + 1.5vw);
+    color: black;
+}
+
+p.italic2 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: black;
+    font-style: normal;
+    font-size: calc(12px + 0.5vw);
+    line-height: 1;
+    text-align: center;
+}
+
+div.side-section{
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    float: left;
+}
+div.double-container{
+    min-height: 0;
+}
+
+/*Section 4*/
+
+section.container-3{
+    background-color: lightskyblue;
+    width: 100%;
+    min-height: 300px;
+    position: relative;
+}
+
+div.section-4{
+
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    font-size:calc(12px + 1.5vw);
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+button.button-2{
+    margin-bottom: 5%;
+    margin-top: 3%;
+    font-size: 50%;
+    background-color: midnightblue;
+    color: white;
+    border: none;
+    border-radius: 0.5vw;
+    width: 8vw;
+    height: 3vw;
+
+}
+
+button.button-2:hover{
+    background-color: white;
+    color: black;
+}
+
+/*Footer*/
+
+footer {
+    width: 100%;
+    background-color: black;
+    min-height: 60px;
+    position: relative;
+    margin-bottom: 40px;
+}
+div.footer-container{
+    margin: 0;
+    width: 60%;
+    color: white;
+    font-size: 1vw;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+
+
+}
+
+/*Menu*/
+
+div.Menu-container{
+    width: 100%;
+    background-color: rgba(255,255,255,0.5);
+    position: fixed;
+    bottom: 0;
+
+}
+
+ul{
+    list-style: none;
+
+
+}
+ul li{
+
+    text-align: center;
+    box-sizing: border-box;
+    width: 25%;
+    float: left;
+    line-height: 40px;
+    height: 40px;
+}
+
+ul li:hover{
+    background-color: dimgrey;
+    border-collapse: collapse;
+    border-top: white solid 5px;
+    border-bottom: white solid 5px;
+    border-left: white solid 10px;
+}
+
 
 
 
