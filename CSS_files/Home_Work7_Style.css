@@ -1,0 +1,78 @@
+/*Global*/
+
+
+*, html, body{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+
+    height: 100%;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-size: 40px;
+
+}
+/*Header*/
+
+header{
+    margin: 0;
+    height: 100%;
+    background: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/will-khoury-will-khoury-photography-1514997259.jpg") no-repeat center;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+}
+
+div.header-text-design{
+    color: white;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/*Section-1*/
+
+section.container-1{
+    margin: 0;
+    background-color: lightpink;
+    width: 100%;
+    min-height: 400px;
+
+
+
+}
+
+div.section-1{
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    color: dimgrey;
+
+}
+img{
+    width: 100%;
+    margin: 40px;
+}
+
+p.italic{
+    color: black;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 2;
+
+
+}
+button.button-1{
+    font-size: 50%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    width: 240px ;
+    height: 60px;
+    margin: 75px;
+}
+
+
+
