@@ -53,6 +53,7 @@ div#right-section{
     float: left;
     border-right: black 2px solid;
     box-sizing: border-box;
+    overflow: auto;
 }
 
 .padding{

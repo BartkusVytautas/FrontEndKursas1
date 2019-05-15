@@ -1,0 +1,148 @@
+/*Global*/
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    font-weight: bold;
+
+}
+
+p{
+    flex-grow: 1;
+    overflow: auto;
+    min-height: 0;
+}
+
+/*Main container*/
+
+div#main-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+}
+
+/*Top and bottom container*/
+
+div.top-bottom-container{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+}
+
+/*Middle container*/
+
+div#middle-container{
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row;
+}
+
+/*Sub containers*/
+
+div#A{
+    width: 75%;
+    height: 100%;
+    background-color: green;
+}
+
+div#B{
+    width: 25%;
+    height: 100%;
+    background-color: green;
+}
+
+div#I{
+
+    background-color: aqua;
+}
+div#C {
+    height: 100%;
+    width: 100%;
+    background-color: yellow;
+    flex-grow: 1;
+    overflow-y: auto;
+    flex-basis: 0;
+
+
+}
+
+div#F{
+    height: 200px;
+    width: 100%;
+    background-color: indianred;
+}
+div#H{
+    width: 100%;
+    background-color: indianred;
+    flex-grow: 1;
+    flex-basis: 0;
+    overflow: auto;
+}
+div.D-E{
+    width: 100%;
+    height: 100px;
+    background-color: blue;
+}
+div#G {
+    width: 100%;
+    background-color: blue;
+    flex-grow: 1;
+    flex-basis: 0;
+    overflow: auto;
+}
+
+
+/*Middle section 1 and 3*/
+
+div.M-section-1-3{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+
+}
+/*Middle section 2*/
+
+div#middle-section-2{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+/*Border*/
+
+.small-border{
+    border:5px solid white;
+}
+
+.larger-left-border{
+    border-left: white solid 20px;
+}
+.larger-right-border{
+    border-right: white solid 20px;
+}
+.larger-top-border{
+    border-top: white solid 20px;
+}
+.larger-bottom-border{
+    border-bottom: white solid 20px;
+}
+
+
+
+
+
+
+
+
+
+
