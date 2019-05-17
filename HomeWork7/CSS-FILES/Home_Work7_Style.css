@@ -20,7 +20,7 @@ Header{
 }
 
 div.header-text-design{
-    font-size:50px;
+    font-size:30px;
     color: white;
     text-align: center;
     position: absolute;
@@ -43,7 +43,7 @@ section.section-container{
     margin: auto;
     width: 60%;
     text-align: center;
-    font-size:calc(12px + 1.5vw);
+    font-size: 40px;
     color: dimgrey;
     padding-top: 60px;
     padding-bottom: 60px;
@@ -131,6 +131,7 @@ section.RSVP-container{
     background-color: lightskyblue;
     width: 100%;
     min-height: 300px;
+    overflow: hidden;
     position: relative;
 }
 
@@ -145,6 +146,7 @@ div.RSVP-section{
     position: absolute;
     left: 50%;
     transform:  translateX(-50%);
+    overflow: hidden;
 }
 
 div.button-container{
