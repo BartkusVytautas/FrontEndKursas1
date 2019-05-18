@@ -5,12 +5,12 @@
     <title>Home Work 8</title>
     <link rel="stylesheet" href="../CSS_FILES/Home_Work8_Style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script type="text/javascript" src="../JavaScript-FILES/Home_Work8_JS.js"></script>
 </head>
 <body>
-    <div class="main-container">
+    <div id="main-container">
         <header>
-            <div class="test">
-            <nav class="left-navigation">
+            <nav id="left-navigation">
                 <ul>
                     <li class="no-left-padding"><a href="#">Sign Up</a></li>
                     <li><a href="#">Login</a></li>
@@ -18,7 +18,7 @@
                     <li><a href="#">Archived news</a></li>
                 </ul>
             </nav>
-            <nav class="right-navigation">
+            <nav id="right-navigation">
                 <ul>
                     <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -27,10 +27,9 @@
                     <li class="no-right-margin"><a href="#"><i class="fas fa-rss"></i></a></li>
                 </ul>
             </nav>
-            </div>
         </header>
-        <section class="navigation-2-container">
-            <nav class="navigation-2-left">
+        <section id="navigation-2-container">
+            <nav id="navigation-2-left">
                 <ul>
                     <li><a href="#">Homepage</a></li>
                     <li><a href="#">Style demo</a></li>
@@ -42,12 +41,43 @@
                     <li><a href="#">Long link text</a></li>
                 </ul>
             </nav>
-            <div class="navigation-2-right">
-                <div class="minus-container"><div class="minus">—</div></div>
+            <div id="navigation-2-right">
+                <div id="minus-container"><div id="minus">—</div></div>
             </div>
         </section>
-        <section>
-
+        <section id="section-1-container">
+            <div id="section-1-left-content">
+                <h1>NobodysFool</h1>
+                <p>Free PSD Website template</p>
+            </div>
+            <div id="section-1-right-container">
+                <form>
+                    <input type="search" name="search" placeholder="Search our Website...">
+                    <button type="submit">SEARCH</button>
+                </form>
+            </div>
+        </section>
+        <section id="section-2-container">
+            <div id="section-2-left-side">
+                <h1>Your title can be long and descriptive</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisl lacus, auctor ut aliquam a, congue eu purus. Maecenas cursus urna a sem fringilla, quis sagittis lorem sagittis. Nulla non bibendum augue. Nam eu tellus dolor. Donec fermentum sapien quis quam posuere ornare ac non elit.</p>
+                <button>READ MORE &#187;</button>
+            </div>
+            <div id="section-2-right-side">
+                <div id="bubble-position">
+                    <ul>
+                        <li><button onclick="myFunction1()"></button></li>
+                        <li><button onclick="myFunction2()"></button></li>
+                        <li><button onclick="myFunction3()"></button></li>
+                        <li><button onclick="myFunction4()"></button></li>
+                        <li><button onclick="myFunction5()"></button></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="section-3">
+            <div></div>
+            <div></div>
         </section>
     </div>
 </body>
