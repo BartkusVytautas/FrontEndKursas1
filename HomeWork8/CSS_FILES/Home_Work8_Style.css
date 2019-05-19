@@ -6,6 +6,7 @@
 }
 body{
     font-family: Georgia, sans-serif;
+    background-color: #db4a39;
 }
 
 ul{
@@ -23,11 +24,15 @@ ul{
 .top-margin-increase{
     margin-top: 20px;
 }
+.lef-margin-increase{
+    margin-left: 20px;
+}
 
 /*Main container*/
 div#main-container{
     margin: auto;
     width: 1000px;
+    background-color: white;
 }
 /*Header*/
 
@@ -41,22 +46,23 @@ header{
 nav#left-navigation{
     margin-left: 20px;
     float: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 nav#left-navigation li{
     display: inline-block;
-    margin-right: 5px;
-    line-height: 60px;
-    height: 60px;
+    text-align: center;
     border-right: #9f9f9f solid 1px;
+    padding: 0 5px 0 5px;
+
 }
 nav#left-navigation li a{
     text-decoration: none;
     color: #9f9f9f;
     text-align: center;
     font-size: 12px;
-
-    padding-right: 10px;
 }
 
 nav#right-navigation{
@@ -125,7 +131,7 @@ nav#navigation-2-left li a{
     font-size: 14px;
     text-align: left;
     box-sizing: content-box;
-    padding-bottom: 12px;
+    padding-bottom: 15px;
     padding-top: 40px;
 
 }
@@ -401,7 +407,116 @@ section#section-5-container{
     width: 100%;
     height: 390px;
     background-color: #1a1a1a;
+    padding: 45px 20px 0 0;
 }
+
+div.subsection{
+    width: 225px;
+    float: left;
+    margin-left: 20px;
+    position: relative;
+}
+
+div.subsection-header-design{
+    color: white;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+div.subsection img{
+    width: 100%;
+    height: 90px;
+    margin-bottom: 15px;
+}
+div.subsection p{
+    color: #666666;
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+div.subsection a{
+    text-decoration: none;
+    font-size: 12px;
+    color: #0099ff;
+}
+
+div.subsection li{
+    margin-bottom: 10px;
+}
+
+div.right-align{
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+ul#quick-links{
+    list-style: '\00BB' inside;
+    color: #666666;
+    font-size: 12px;
+
+}
+div.subsection li a{
+    padding-left: 10px;
+}
+
+article{
+    color: #666666;
+    width: 100%;
+}
+
+article div{
+    font-size: 10px;
+}
+article h3{
+    font-size: 14px;
+}
+
+article p{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px !important;
+}
+div.subsection form input{
+    width: 100%;
+    height: 30px;
+    color: #989898;
+    background-color: #232323;
+    border: none;
+    padding-left: 10px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+div.subsection form textarea{
+    width: 100%;
+    height: 100px;
+    color: #989898;
+    background-color: #232323;
+    border: none;
+    padding: 10px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    font-family: Georgia sans-serif;
+    overflow-y: auto;
+    resize: both;
+    min-width: 75px;
+    max-width: 100%;
+    min-height: 40px;
+    max-height: 130px;
+}
+
+div.subsection button{
+    height: 35px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0099ff;
+    color: white;
+    font-size: 13px;
+}
+div.subsection button:hover{
+    background-color: #db4a39;
+}
+
 /*Footer*/
 
 footer{
