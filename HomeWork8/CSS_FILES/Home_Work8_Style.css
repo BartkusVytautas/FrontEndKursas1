@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
+body, html{
     font-family: Georgia, sans-serif;
     background-color: #db4a39;
 }
@@ -131,7 +131,7 @@ nav#navigation-2-left li a{
     font-size: 14px;
     text-align: left;
     box-sizing: content-box;
-    padding-bottom: 15px;
+    padding-bottom: 14px;
     padding-top: 40px;
 
 }
@@ -443,20 +443,21 @@ div.subsection a{
 div.subsection li{
     margin-bottom: 10px;
 }
+div.subsection li:before{
+    font-size: 12px;
+    content: '\00BB';
+    margin-right: 10px;
+    color: #666666;
+}
 
 div.right-align{
     text-align: right;
     margin-bottom: 20px;
 }
 
-ul#quick-links{
-    list-style: '\00BB' inside;
-    color: #666666;
-    font-size: 12px;
 
-}
 div.subsection li a{
-    padding-left: 10px;
+    padding-left: 0;
 }
 
 article{
@@ -479,6 +480,7 @@ article p{
 div.subsection form input{
     width: 100%;
     height: 30px;
+    font-family: inherit;
     color: #989898;
     background-color: #232323;
     border: none;
@@ -539,5 +541,6 @@ footer p.left{
     line-height: 65px;
     height: 65px;
 }
+
 
 
