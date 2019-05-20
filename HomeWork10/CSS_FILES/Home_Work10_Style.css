@@ -1,0 +1,40 @@
+/*Global*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    font-family: monospace;
+    height: 100%;
+}
+
+/*Main container*/
+
+div#main-container{
+    width: 60%;
+    margin: auto;
+    min-height: 300px;
+    background-color: white;
+    position: relative;
+}
+
+/*Top section*/
+
+div#top-section-container{
+    background-color: #989898;
+    width: 100%;
+    min-height: 200px;
+}
+
+
+
+label{
+    display: inline-block;
+    text-align: right;
+    width: 200px;
+    margin-right: 10px;
+}
+
