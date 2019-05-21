@@ -9,20 +9,34 @@
     <div id="main-container">
         <div id="top-section-container">
             <form>
-                <label for="title">Title</label><input type="text" id="title" name="title" placeholder="Select one or enter your own"><br>
-                <label for="name">Name</label><input type="text" id="name" name="name" placeholder="John doe"><br>
-                <label for="phone_number">Phone Number</label><input type="text" id="phone_number" name="phone_number" placeholder="+1 23456789">(optional)<br>
-                <label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="Johndoe@email.com"><br>
-                <label for="url">Your Website</label><input type="url" id="url" name="url" placeholder="www.yoursite.com">(optional)<br>
-                <label for="quantity">Nr. of items to order</label><input type="number" id="quantity" name="quantity" min="1" max="10">(1-10)<br>
-                <label for="length">Length</label><input type="range" id="length" name="length" min="0" max="500" step="0.1"><span id="length_value">0</span>m (in 10cm increments)<br>
-                <label for="date">Delivery Date</label><input type="date" id="date" name="date" min="2010-12-16" max="2100-01-01"><br>
-                <label for="time">Time of delivery</label><input type="time" id="time" name="time" step="1800"><br>
-                <label for="color">Color of the item</label><input type="color" id="color" name="color" value="#ff0000">(default red)
+                <label for="title">Title</label><input class="longer-input" type="text" id="title" name="title" placeholder="Select one or enter your own" required><br>
+                <label for="name">Name</label><input class="longer-input"  type="text" id="name" name="name" placeholder="John doe" required><br>
+                <label for="phone_number">Phone Number</label><input class="longer-input"  type="text" id="phone_number" name="phone_number" placeholder="+1 23456789">(optional)<br>
+                <label for="email">Email Address</label><input class="longer-input"  type="email" id="email" name="email" placeholder="Johndoe@email.com" required><br>
+                <label for="url">Your Website</label><input class="longer-input"  type="url" id="url" name="url" placeholder="www.yoursite.com">(optional)<br>
+                <label for="quantity">Nr. of items to order</label><input class="shorter-input" type="number" id="quantity" value="1" name="quantity" min="1" max="10" required>(1-10)<br>
+                <label for="my_length">Length</label><input type="range" id="my_length" name="length" min="1" max="500" value="10" step="0.1"><span id="length_value"> </span>m (in 10cm increments)<br>
+                <label for="date">Delivery Date</label><input type="date" id="date" name="date" min="2010-12-16" max="2100-01-01" required><br>
+                <label for="time">Time of delivery</label><input type="time" id="time" name="time" step="1800" required><br>
+                <label for="color">Color of the item</label><input class="shorter-input" type="color" id="color" name="color" value="#ff0000">(default red)<br>
+                <button type="submit">Submit</button>
             </form>
         </div>
-        <div></div>
+        <div id="bottom-section-container">
+           <form>
+               <label for="search">Search</label><input type="search" name="search" id="search" required>
+                <button type="submit">Go</button>
+           </form>
+        </div>
     </div>
+    <script>
+        var range = document.getElementById("my_length");
+        var output = document.getElementById("length_value");
+        output.innerHTML = range.value;
+        range.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    </script>
 
 </body>
 </html>
