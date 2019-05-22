@@ -8,6 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <nav id="fixed-navigation">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Menu</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a>Contact</li>
+        </ul>
+    </nav>
     <header>
         <div id="header-container">
             <h1>THIN<br>CRUST PIZZA</h1>
@@ -63,15 +71,46 @@
         </div>
     </section>
     <section id="section-2-container">
-        <h2>About</h2>
-        <p>The Pizza Restaurant was founded in blabla by Mr. Italiano in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <img src="https://s3-media4.fl.yelpcdn.com/buphoto/MpyZtQny1kKP38nvNgFb2w/o.jpg" id="round-picture" alt="chef">
-        <p><b>Chef?</b> Mr. Italiano himself</p>
-        <p>We are proud of our interiors.</p>
-        <img src="https://cms.hostelbookers.com/hbblog/wp-content/uploads/sites/3/2013/03/Pizza-East-inside.jpg" id="pizza-place" alt="pizza place">
-
-
+        <div id="section-2-main-container"><h2>About</h2>
+            <p>The Pizza Restaurant was founded in blabla by Mr. Italiano in lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <img src="https://s3-media4.fl.yelpcdn.com/buphoto/MpyZtQny1kKP38nvNgFb2w/o.jpg" id="round-picture" alt="chef">
+            <p><b>Chef?</b> Mr. Italiano himself</p>
+            <p>We are proud of our interiors.</p>
+            <img src="https://cms.hostelbookers.com/hbblog/wp-content/uploads/sites/3/2013/03/Pizza-East-inside.jpg" id="pizza-place" alt="pizza place">
+            <div id="opening-hours"><b>Opening hours</b></div>
+            <div id="left-subsection">
+                <p>Mon & Tue CLOSED</p>
+                <p>Wednesday 10.00 - 24.00</p>
+                <p>Thursday 10:00 - 24:00</p>
+            </div>
+            <div id="right-subsection">
+                <p>Friday 10:00 - 12:00</p>
+                <p>Saturday 10:00 - 23:00</p>
+                <p>Sunday Closed</p>
+            </div>
+        </div>
     </section>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4471.9099699177195!2d21.07373523744141!3d55.91548089419023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xebb48a5634b4ebb7!2sEat+Joda+Pizza!5e0!3m2!1sen!2slt!4v1558553665463!5m2!1sen!2slt" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <section id="section-3-container">
+        <div id="section-3-main-container">
+            <h2>Contact</h2>
+            <p>Find us at some address at some place or call us at 05050515-122330</p>
+            <p><span id="FYI">FYI!</span> We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste.</p>
+            <p class="reserve-table-design"><b>Reserve</b> a table, ask for today's special or just send us a message:</p>
+            <form>
+                <input type="text" name="name" placeholder="Name">
+                <input type="number" name="quantity" min="1" max="500" placeholder="1">
+                <input type="datetime-local" name="date" value="2019-05-24T19:30" min="2019-05-23T17:30" max="2019-05-30T22:30">
+                <input type="text" name="message" placeholder="Message/Special requirements">
+                <button type="submit">Send message</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <p>Powered by <a href="#">w3.css</a></p>
+        </div>
+    </footer>
 
 </body>
 </html>
