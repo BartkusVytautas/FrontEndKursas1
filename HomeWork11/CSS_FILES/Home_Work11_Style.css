@@ -16,6 +16,10 @@ ul{
     font-size: 0;
 }
 
+.padding-bottom{
+    padding-bottom: 40px !important;
+}
+
 /*Header*/
 
 header{
@@ -113,11 +117,11 @@ nav#navigation-container li:hover{
 
 div.meal-container{
     width: 100%;
-    padding: 0 20px 40px 20px;
+    padding: 0 20px 0 20px;
     background-color: white;
     font-size: 30px;
     text-align: left;
-    border-top: 1px solid #666666 ;
+
 }
 
 div.price-tag{
@@ -154,7 +158,45 @@ span#new{
     border-radius: 5px;
 }
 
+hr{
+    margin-top: 40px;
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
 
+/*Section 2*/
+
+section#section-2-container{
+    width: 100%;
+    padding: 50px 20px 50px 20px;
+    background-color: #f44336;
+    filter: grayscale(70%);
+    text-align: center;
+    overflow: hidden;
+}
+
+section#section-2-container p{
+    font-size: 24px;
+    text-align: left;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+img#round-picture{
+    width: 150px;
+    border-radius: 50%;
+    float: right;
+}
+
+img#pizza-place{
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+    clear: both;
+}
 
 
 
