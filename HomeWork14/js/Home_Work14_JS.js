@@ -60,5 +60,5 @@ function displayCarAttributes() {
     document.getElementById("pl-number").innerHTML = car[1];
     document.getElementById("distance").innerHTML = car[2];
     document.getElementById("time").innerHTML = car[3];
-    document.getElementById("speed").innerHTML = carSpeed();
+    document.getElementById("speed").innerHTML = carSpeed().toString();
 }
