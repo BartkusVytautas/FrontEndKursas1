@@ -4,17 +4,46 @@
     <meta charset="UTF-8">
     <title>Home work 14</title>
     <script src="../js/Home_Work14_JS.js"></script>
+    <style>
+        td{
+            text-align: center;
+        }
+        table{
+            margin: auto;
+            width: 70%;
+        }
+
+        p{
+            margin-bottom: 100px;
+        }
+    </style>
 </head>
-<body>
+<body onload="displayCarAttributes()">
 <h1>Calculation of triangle area</h1>
 <form onsubmit="return false">
     <label for="a">Please type a:</label><input type="number" id="a" name="a">
     <label for="b">Please type b:</label><input type="number" id="b" name="b">
-    <label for="c"></label>Please type c:<input type="number" id="c" name="c">
+    <label for="c">Please type c:</label><input type="number" id="c" name="c">
     <button onclick="calc()" type="submit">Calculate</button>
 </form>
 
 <p>Triangle type: <span id="type"></span><br>Triangle area: <span id="area"></span></p>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Plate number</th>
+        <th>Distance covered</th>
+        <th>Time</th>
+        <th>Speed km/h</th>
+    </tr>
+    <tr>
+        <td id="date"></td>
+        <td id="pl-number"></td>
+        <td id="distance"></td>
+        <td id="time"></td>
+        <td id="speed"></td>
+    </tr>
+</table>
 
 
 </body>
