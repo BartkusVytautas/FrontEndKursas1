@@ -3,11 +3,10 @@
 // Triangle calculation
 
 function isTriangle(a, b, c) {
-    if((a + b > c) && (a + c > b) && (c + b > a)){
+    if(((a + b > c) && (a + c > b) && (c + b > a)) && (a > 0) && (b>0) && (c>0)){
         return true;
     }
     return false;
-
 }
 
 function triangleType (a, b, c) {
@@ -38,9 +37,9 @@ function triangleType (a, b, c) {
 
 
     function calc() {
-        var a = parseInt(document.getElementById("a").value);
-        var b = parseInt(document.getElementById("b").value);
-        var c = parseInt(document.getElementById("c").value);
+        var a = parseFloat(document.getElementById("a").value);
+        var b = parseFloat(document.getElementById("b").value);
+        var c = parseFloat(document.getElementById("c").value);
         document.getElementById("type").innerHTML = triangleType(a,b,c);
         document.getElementById("area").innerHTML = triangleArea(a,b,c);
         console.log(isTriangle(a,b,c));
