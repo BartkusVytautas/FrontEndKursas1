@@ -42,7 +42,6 @@ function triangleType (a, b, c) {
         var c = parseFloat(document.getElementById("c").value);
         document.getElementById("type").innerHTML = triangleType(a,b,c);
         document.getElementById("area").innerHTML = triangleArea(a,b,c);
-        console.log(isTriangle(a,b,c));
 }
 
 
