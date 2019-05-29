@@ -1,0 +1,41 @@
+/*Global*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+/*Table*/
+
+
+table{
+    width: 1000px;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+td{
+    width: 111.11px;
+    height: 111.11px;
+    border: none;
+    text-align: center;
+}
+
+td.dark-cell{
+    background-color: #ff501d;
+}
+
+td.light-cell{
+    background-color: #ffa819;
+}
+
+h1{
+    text-align: center;
+}
+
+i{
+    font-size: 100px;
+}
+i.white{
+    color: white;
+}

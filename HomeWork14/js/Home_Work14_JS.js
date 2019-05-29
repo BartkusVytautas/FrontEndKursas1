@@ -47,7 +47,7 @@ function triangleType (a, b, c) {
 
 // Speed calculation
 
-var car = ["2017-07-06 19:59:45", "LRS123", 5000, 118];
+var car = ["2017-07-06 19:59:45", "LRS123", 5000, 1500];
 var speed = 0.0;
 
 function carSpeed() {
