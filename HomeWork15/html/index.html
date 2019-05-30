@@ -7,29 +7,29 @@
     <link rel="stylesheet" href="../css/Home_Work15_style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
-<body>
+<body onload="set_global_attributes_onLoad()">
     <table>
         <tr>
             <td><h1>8</h1></td>
-            <td class="light-cell"><i class="fas fa-chess-rook"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-knight"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-bishop"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-king"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-queen"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-bishop"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-knight"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-rook"></i></td>
+            <td class="light-cell"><i id="br1" class="fas fa-chess-rook"></i></td>
+            <td class="dark-cell"><i id="bk1" class="fas fa-chess-knight"></i></td>
+            <td class="light-cell"><i id="bb1" class="fas fa-chess-bishop"></i></td>
+            <td class="dark-cell"><i id="bk" class="fas fa-chess-king"></i></td>
+            <td class="light-cell"><i id="bq" class="fas fa-chess-queen"></i></td>
+            <td class="dark-cell"><i id="bb2" class="fas fa-chess-bishop"></i></td>
+            <td class="light-cell"><i id="bk2" class="fas fa-chess-knight"></i></td>
+            <td class="dark-cell"><i id="br2" class="fas fa-chess-rook"></i></td>
         </tr>
         <tr>
             <td><h1>7</h1></td>
-            <td class="dark-cell"><i class="fas fa-chess-pawn"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-pawn"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-pawn"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-pawn"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-pawn"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-pawn"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-pawn"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-pawn"></i></td>
+            <td class="dark-cell"><i id="bp1" class="fas fa-chess-pawn"></i></td>
+            <td class="light-cell"><i id="bp2" class="fas fa-chess-pawn"></i></td>
+            <td class="dark-cell"><i id="bp3" class="fas fa-chess-pawn"></i></td>
+            <td class="light-cell"><i id="bp4" class="fas fa-chess-pawn"></i></td>
+            <td class="dark-cell"><i id="bp5" class="fas fa-chess-pawn"></i></td>
+            <td class="light-cell"><i id="bp6" class="fas fa-chess-pawn"></i></td>
+            <td class="dark-cell"><i id="bp7" class="fas fa-chess-pawn"></i></td>
+            <td class="light-cell"><i id="bp8" class="fas fa-chess-pawn"></i></td>
         </tr>
         <tr>
             <td><h1>6</h1></td>
@@ -77,25 +77,25 @@
         </tr>
         <tr>
             <td><h1>2</h1></td>
-            <td class="light-cell"><i class="fas fa-chess-pawn white"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-pawn white"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-pawn white"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-pawn white"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-pawn white"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-pawn white"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-pawn white"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-pawn white"></i></td>
+            <td class="light-cell"><i id="wp1" class="fas fa-chess-pawn white"></i></td>
+            <td class="dark-cell"><i id="wp2" class="fas fa-chess-pawn white"></i></td>
+            <td class="light-cell"><i id="wp3" class="fas fa-chess-pawn white"></i></td>
+            <td class="dark-cell"><i id="wp4" class="fas fa-chess-pawn white"></i></td>
+            <td class="light-cell"><i id="wp5" class="fas fa-chess-pawn white"></i></td>
+            <td class="dark-cell"><i id="wp6" class="fas fa-chess-pawn white"></i></td>
+            <td class="light-cell"><i id="wp7" class="fas fa-chess-pawn white"></i></td>
+            <td class="dark-cell"><i id="wp8" class="fas fa-chess-pawn white"></i></td>
         </tr>
         <tr>
             <td><h1>1</h1></td>
-            <td class="dark-cell "><i class="fas fa-chess-rook white"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-knight white"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-bishop white"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-king white"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-queen white"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-bishop white"></i></td>
-            <td class="dark-cell"><i class="fas fa-chess-knight white"></i></td>
-            <td class="light-cell"><i class="fas fa-chess-rook white"></i></td>
+            <td class="dark-cell "><i id="wr1" class="fas fa-chess-rook white"></i></td>
+            <td class="light-cell"><i id="wk1" class="fas fa-chess-knight white"></i></td>
+            <td class="dark-cell"><i id="wb1" class="fas fa-chess-bishop white"></i></td>
+            <td class="light-cell"><i id="wk" class="fas fa-chess-king white"></i></td>
+            <td class="dark-cell"><i id="wq" class="fas fa-chess-queen white"></i></td>
+            <td class="light-cell"><i id="wb2" class="fas fa-chess-bishop white"></i></td>
+            <td class="dark-cell"><i id="wk2" class="fas fa-chess-knight white"></i></td>
+            <td class="light-cell"><i id="wr2" class="fas fa-chess-rook white"></i></td>
         </tr>
         <tr>
             <td></td>
