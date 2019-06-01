@@ -3,8 +3,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    font-family: Arial, sans-serif;
 }
+
 /*Table*/
 
 
@@ -14,7 +15,7 @@ table{
     border-collapse: collapse;
 }
 
-td{
+td.square{
     width: 111.11px;
     height: 111.11px;
     border: none;
@@ -30,6 +31,7 @@ td.light-cell{
     background-color: #ffa819;
 }
 
+
 h1{
     text-align: center;
 }
@@ -37,8 +39,26 @@ h1{
 i{
     font-size: 100px;
     opacity: 0.99;
+    display: none !important;
 
 }
 i.white{
     color: white;
+}
+
+button{
+    background-color: #0099ff;
+    font-family: inherit;
+    font-size: 36px;
+    padding: 30px;
+    position: absolute;
+    top:0;
+    right: 0;
+    border: none;
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color: #db4a39;
+    cursor: pointer;
 }
