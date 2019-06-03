@@ -7,13 +7,12 @@ function startTheGame() {
         figuresArray[i].style.setProperty("display", "block", "important");
         figuresArray[i].draggable = true;
     }
-    aaa();
 }
 
 
 /**
  * Chess board
- * @type {*[]}
+ * @type {*[object}
  */
 var board = [
     [{position: "A8", isOccupied: true}, {position: "B8", isOccupied: true}, {position: "C8", isOccupied: true}, {position: "D8", isOccupied:true}, {position:"E8", isOccupied: true}, {position:"F8", isOccupied: true}, {position: "G8", isOccupied: true}, {position: "H8", isOccupied: true}],
@@ -262,19 +261,30 @@ var figures = {
 };
 var squareArray = document.getElementsByClassName('square');
 
+var draggedObject = null;
 
-
-
-function getIDonDragStart(ev){
-    ev.dataTransfer.setData("text/plain", ev.target.id);
+var figureId = "";
+function dragStart (ev){
+    figureId = ev.dataTransfer.setData("text", ev.target.id);
 }
 
-
-function aaa() {
-    for (var i = 0; i < figuresArray.length; i++) {
-        figuresArray[i].addEventListener("dragstart", function (e) {
-            console.log(getIDonDragStart(e));
-        });
-
+function getFigureObject (figureId){
+    var x;
+    for (x in figures){
+       if(figures[x].figureID === figureId){
+           figures[x] = draggedObject;
+           break;
+       }
     }
+    return draggedObject;
 }
+
+for (var j = 0; j < figuresArray.length; j++){
+    figuresArray[i].addEventListener('dragstart', function(e){
+        dragStart(e);
+        var currentObject = getFigureObject(figureId);
+        console.log(currentObject);
+    });
+}
+
+
