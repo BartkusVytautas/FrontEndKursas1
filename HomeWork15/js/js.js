@@ -3,10 +3,14 @@
  */
 var figuresArray = document.getElementsByTagName('i');
 function startTheGame() {
+    document.getElementById('button').style.setProperty("display", "none", "important");
     for (var i = 0; i < figuresArray.length; i++){
         figuresArray[i].style.setProperty("display", "block", "important");
         figuresArray[i].draggable = true;
     }
+    dragStartHandler();
+    dragOverHandler();
+    dropHandler();
 }
 
 
@@ -220,71 +224,142 @@ var figures = {
         playerId: 2,
         figureID: "wb1",
         status: 1,
-        position: "C2",
+        position: "C1",
     },
 
     wk : {
         playerId: 2,
         figureID: "wk",
         status: 1,
-        position: "D2",
+        position: "D1",
     },
 
     wq : {
         playerId: 2,
         figureID: "wq",
         status: 1,
-        position: "E2",
+        position: "E1",
     },
 
     wb2 : {
         playerId: 2,
         figureID: "wb2",
         status: 1,
-        position: "F2",
+        position: "F1",
     },
 
     wk2 : {
         playerId: 2,
         figureID: "wk2",
         status: 1,
-        position: "G2",
+        position: "G1",
     },
 
     wr2 : {
         playerId: 2,
         figureID: "wr2",
         status: 1,
-        position: "H2",
+        position: "H1",
     },
 
 };
 var squareArray = document.getElementsByClassName('square');
 
-var draggedObject = null;
-
+var currentObject = null;
 var figureId = "";
+var isDropAllowed = false;
+
+
 function dragStart (ev){
-    figureId = ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+    figureId = ev.target.getAttribute('id');
+
 }
 
+/**
+ * Gets the dragged figure object
+ * @param figureId {string}
+ * @returns {object}
+ */
 function getFigureObject (figureId){
     var x;
     for (x in figures){
        if(figures[x].figureID === figureId){
-           figures[x] = draggedObject;
+           var draggedObject = figures[x];
            break;
        }
     }
     return draggedObject;
 }
 
-for (var j = 0; j < figuresArray.length; j++){
-    figuresArray[i].addEventListener('dragstart', function(e){
-        dragStart(e);
-        var currentObject = getFigureObject(figureId);
-        console.log(currentObject);
-    });
+
+function getDraggedOverObject(figurePosition) {
+    var y;
+    for (y in figures){
+        if(figures[y].position === figurePosition){
+            var draggedOverObject = figures[y];
+            break;
+        }
+    }
+    return draggedOverObject;
 }
+
+function dragStartHandler() {
+    for (var j = 0; j < figuresArray.length; j++) {
+        figuresArray[j].addEventListener('dragstart', function (e) {
+            dragStart(e);
+             currentObject = getFigureObject(figureId);
+            for (var k = 0; k < board.length; k++){
+                for (var m =0; m<board[k].length;m++){
+                    if (board[k][m].position === currentObject.position){
+                        board[k][m].isOccupied = false;
+                        break;
+                    }
+                }
+            }
+        });
+    }
+}
+
+function dragOverHandler () {
+    for (var i = 0; i < squareArray.length; i++){
+        squareArray[i].addEventListener('dragover', function(e){
+            e.preventDefault();
+
+        });
+    }
+}
+
+function dropHandler() {
+    for(var i = 0; i < squareArray.length; i++){
+        squareArray[i].addEventListener('drop', function (e) {
+            e.preventDefault();
+            for(var j = 0; j<board.length; j++){
+                for (var l = 0; l < board[j].length; l++){
+                    if (e.target.getAttribute('id') === board[j][l].position){
+                        isDropAllowed = !board[j][l].isOccupied;
+                        console.log(isDropAllowed);
+                        if (!isDropAllowed){
+                            var draggedOver = getDraggedOverObject(board[j][l].position);
+                            if(draggedOver.playerId !== currentObject.playerId){
+                                document.getElementById(draggedOver.figureID).remove();
+                            }else{
+                                return false;
+                            }
+                        }
+
+                        var data = e.dataTransfer.getData("Text");
+                        e.target.appendChild(document.getElementById(data));
+                        board[j][l].isOccupied = true;
+                        currentObject.position = board[j][l].position;
+
+                    }
+                }
+            }
+        });
+    }
+}
+
+
 
 
