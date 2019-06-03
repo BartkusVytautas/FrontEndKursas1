@@ -1,11 +1,13 @@
 /**
  * GAME START FUNCTION
  */
+var figuresArray = document.getElementsByTagName('i');
 function startTheGame() {
-    var figuresArray = document.getElementsByTagName('i');
-    for (var i = 0; i<figuresArray.length; i++){
+    for (var i = 0; i < figuresArray.length; i++){
         figuresArray[i].style.setProperty("display", "block", "important");
+        figuresArray[i].draggable = true;
     }
+    aaa();
 }
 
 
@@ -258,14 +260,21 @@ var figures = {
     },
 
 };
+var squareArray = document.getElementsByClassName('square');
 
 
 
-    var squareArray = document.getElementsByClassName('square');
-    for (var i = 0; i < squareArray.length; i++) {
-        squareArray[i].addEventListener('dragstart', function (e){
 
+function getIDonDragStart(ev){
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+}
+
+
+function aaa() {
+    for (var i = 0; i < figuresArray.length; i++) {
+        figuresArray[i].addEventListener("dragstart", function (e) {
+            console.log(getIDonDragStart(e));
         });
 
     }
-
+}
