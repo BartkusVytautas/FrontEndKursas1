@@ -335,12 +335,21 @@ function dragOverHandler () {
 
         });
     }
+    for (var j = 0; j < figuresArray.length; j++){
+        figuresArray[j].addEventListener('dragover', function (e) {
+            e.preventDefault();
+        });
+    }
+
 }
 var droppedOnSquare = null;
+var draggedOver = null;
 var droppedX = 0;
 var droppedY = 0;
 function dropHandler() {
     for(var i = 0; i < squareArray.length; i++){
+        let square = squareArray[i];
+
         squareArray[i].addEventListener('drop', function (e) {
             e.preventDefault();
             if((currentObject.playerId === 2) && (turnCounter % 2 !== 0)){
@@ -351,30 +360,29 @@ function dropHandler() {
             }
             for(var j = 0; j<board.length; j++){
                 for (var l = 0; l < board[j].length; l++){
-                    if (e.target.getAttribute('id') === board[j][l].position){
-                        droppedOnSquare = board[j][l];
 
+                    if (square.getAttribute('id') === board[j][l].position){
+                        droppedOnSquare = board[j][l];
+                        droppedX = l;
+                        droppedY = j;
+                        if (!isLegalMove(currentObject.figureID)){
+                            return false;
+                        }
                         isDropAllowed = !droppedOnSquare.isOccupied;
                         if (!isDropAllowed){
-                            var draggedOver = getDraggedOverObject(droppedOnSquare.position);
+                             draggedOver = getDraggedOverObject(droppedOnSquare.position);
                             if(draggedOver.playerId !== currentObject.playerId){
                                 document.getElementById(draggedOver.figureID).remove();
                             }else{
                                 return false;
                             }
                         }
-
-                        // if (!isLegalMove(currentObject.figureID)){
-                        //     return false;
-                        // }
-                        droppedX = l;
-                        droppedY = j;
-                        console.log(isLegalMove(currentObject.figureID));
                         var data = e.dataTransfer.getData("Text");
-                        e.target.appendChild(document.getElementById(data));
+                        square.appendChild(document.getElementById(data));
                         board[j][l].isOccupied = true;
                         currentObject.position = board[j][l].position;
                         turnCounter++;
+                        console.log(droppedX + " " + draggedX);
                     }
                 }
             }
@@ -382,13 +390,32 @@ function dropHandler() {
     }
 }
 
+var isLegalMoveBool = null;
 function isLegalMove(figureId){
-    var isLegalMoveBool = false;
+    isLegalMoveBool = false;
     switch (figureId) {
-        case "bp1":case "bp2":case "bp3":case "bp4":case "bp5":case "bp6":case "bp7":case "bp8":case "wp1":case "wp2":case "wp3":case "wp4":case "wp5":case "wp6":case "wp7":case "wp8":
-        if(((droppedY - draggedY) === 1) || ((droppedY - draggedY) === -1)){
+        case "bp1":case "bp2":case "bp3":case "bp4":case "bp5":case "bp6":case "bp7":case "bp8":
+
+            if(((droppedY - draggedY) === 1) && (droppedX === draggedX) && (draggedOver.isOccupied ===false)){
             isLegalMoveBool = true;
-        }
+            }
+            if ((((droppedY - draggedY) === 2) && (droppedX === draggedX)) && (currentObject.status ===1) && (draggedOver.isOccupied ===false)){
+            isLegalMoveBool = true;
+            }
+            currentObject.status = 2;
+            if ((((droppedX - draggedX) ===1) || ((droppedX - draggedX) === -1) && (draggedOver.isOccupied === true))){
+                isLegalMoveBool = true;
+            }
+            break;
+        case "wp1":case "wp2":case "wp3":case "wp4":case "wp5":case "wp6":case "wp7":case "wp8":
+            if(((droppedY - draggedY) === -1) && (droppedX === draggedX) && (draggedOver.isOccupied ===false)){
+                isLegalMoveBool = true;
+            }
+            if ((((droppedY - draggedY) === -2)) && (currentObject.status ===1) && (droppedX === draggedX)){
+                isLegalMoveBool = true;
+            }
+            currentObject.status = 2;
+            break;
     }
     return isLegalMoveBool;
 }
