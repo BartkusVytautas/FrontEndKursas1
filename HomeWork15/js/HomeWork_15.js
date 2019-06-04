@@ -268,6 +268,7 @@ var squareArray = document.getElementsByClassName('square');
 var currentObject = null;
 var figureId = "";
 var isDropAllowed = false;
+var turnCounter = 0;
 
 
 function dragStart (ev){
@@ -303,7 +304,9 @@ function getDraggedOverObject(figurePosition) {
     }
     return draggedOverObject;
 }
-
+var draggedX = 0;
+var draggedY = 0;
+var draggedFromSquare = null;
 function dragStartHandler() {
     for (var j = 0; j < figuresArray.length; j++) {
         figuresArray[j].addEventListener('dragstart', function (e) {
@@ -311,8 +314,12 @@ function dragStartHandler() {
              currentObject = getFigureObject(figureId);
             for (var k = 0; k < board.length; k++){
                 for (var m =0; m<board[k].length;m++){
-                    if (board[k][m].position === currentObject.position){
-                        board[k][m].isOccupied = false;
+                    draggedFromSquare = board[k][m];
+
+                    if (draggedFromSquare.position === currentObject.position){
+                        draggedFromSquare.isOccupied = false;
+                        draggedX=m;
+                        draggedY=k;
                         break;
                     }
                 }
@@ -329,18 +336,27 @@ function dragOverHandler () {
         });
     }
 }
-
+var droppedOnSquare = null;
+var droppedX = 0;
+var droppedY = 0;
 function dropHandler() {
     for(var i = 0; i < squareArray.length; i++){
         squareArray[i].addEventListener('drop', function (e) {
             e.preventDefault();
+            if((currentObject.playerId === 2) && (turnCounter % 2 !== 0)){
+                return false;
+            }
+            if((currentObject.playerId === 1) && (turnCounter % 2 === 0)){
+                return false;
+            }
             for(var j = 0; j<board.length; j++){
                 for (var l = 0; l < board[j].length; l++){
                     if (e.target.getAttribute('id') === board[j][l].position){
-                        isDropAllowed = !board[j][l].isOccupied;
-                        console.log(isDropAllowed);
+                        droppedOnSquare = board[j][l];
+
+                        isDropAllowed = !droppedOnSquare.isOccupied;
                         if (!isDropAllowed){
-                            var draggedOver = getDraggedOverObject(board[j][l].position);
+                            var draggedOver = getDraggedOverObject(droppedOnSquare.position);
                             if(draggedOver.playerId !== currentObject.playerId){
                                 document.getElementById(draggedOver.figureID).remove();
                             }else{
@@ -348,11 +364,17 @@ function dropHandler() {
                             }
                         }
 
+                        // if (!isLegalMove(currentObject.figureID)){
+                        //     return false;
+                        // }
+                        droppedX = l;
+                        droppedY = j;
+                        console.log(isLegalMove(currentObject.figureID));
                         var data = e.dataTransfer.getData("Text");
                         e.target.appendChild(document.getElementById(data));
                         board[j][l].isOccupied = true;
                         currentObject.position = board[j][l].position;
-
+                        turnCounter++;
                     }
                 }
             }
@@ -360,6 +382,14 @@ function dropHandler() {
     }
 }
 
-
-
+function isLegalMove(figureId){
+    var isLegalMoveBool = false;
+    switch (figureId) {
+        case "bp1":case "bp2":case "bp3":case "bp4":case "bp5":case "bp6":case "bp7":case "bp8":case "wp1":case "wp2":case "wp3":case "wp4":case "wp5":case "wp6":case "wp7":case "wp8":
+        if(((droppedY - draggedY) === 1) || ((droppedY - draggedY) === -1)){
+            isLegalMoveBool = true;
+        }
+    }
+    return isLegalMoveBool;
+}
 
