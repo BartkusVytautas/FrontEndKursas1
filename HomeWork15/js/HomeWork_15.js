@@ -345,6 +345,7 @@ var droppedOnSquare = null;
 var draggedOver = null;
 var droppedX = 0;
 var droppedY = 0;
+var isSquarempty = false;
 function dropHandler() {
     for(var i = 0; i < squareArray.length; i++){
         let square = squareArray[i];
@@ -365,21 +366,21 @@ function dropHandler() {
                         droppedX = l;
                         droppedY = j;
                         draggedOver = getDraggedOverObject(droppedOnSquare.position);
-                        isDropAllowed = !droppedOnSquare.isOccupied;
-                            if (!isDropAllowed ) {
-                                if (currentObject.playerId !== draggedOver.playerId) {
-                                    document.getElementById(draggedOver.figureID).remove();
-                                } else {
-                                    return false;
-                                }
-                            }
-
+                        isSquarempty = !droppedOnSquare.isOccupied;
+                        if(!isLegalMove(currentObject.figureID, currentObject, draggedOver )){
+                            return false;
+                        }
                         var data = e.dataTransfer.getData("Text");
                         square.appendChild(document.getElementById(data));
                         board[j][l].isOccupied = true;
                         draggedFromSquare.isOccupied = false;
                         currentObject.position = board[j][l].position;
                         turnCounter++;
+                        if(turnCounter % 2 ===0){
+                            document.getElementById('turn-color').style.backgroundColor = "white";
+                        }else{
+                            document.getElementById('turn-color').style.backgroundColor = "black";
+                        }
 
                     }
                 }
@@ -389,30 +390,86 @@ function dropHandler() {
 }
 
 var isLegalMoveBool = null;
-function isLegalMove(figureId){
+function isLegalMove(figureId, object1, object2){
     isLegalMoveBool = false;
     switch (figureId) {
         case "bp1":case "bp2":case "bp3":case "bp4":case "bp5":case "bp6":case "bp7":case "bp8":
 
-            if(((droppedY - draggedY) === 1) && (droppedX === draggedX) && (draggedOver.isOccupied ===false)){
-            isLegalMoveBool = true;
+            if(((droppedY - draggedY) === 1) && (droppedX === draggedX) && (isSquarempty)){
+                isLegalMoveBool = true;
+                currentObject.status = 2;
+            break;
             }
-            if ((((droppedY - draggedY) === 2) && (droppedX === draggedX)) && (currentObject.status ===1) && (draggedOver.isOccupied ===false)){
-            isLegalMoveBool = true;
+            if ((((droppedY - draggedY) === 2) && (droppedX === draggedX)) && (currentObject.status ===1) && (isSquarempty)){
+                isLegalMoveBool = true;
+                currentObject.status = 2;
+                break;
             }
-            currentObject.status = 2;
-
+            if(((droppedY - draggedY) === 1) && (((droppedX - draggedX) ===1) || ((droppedX - draggedX) ===-1)) && !isSquarempty){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
+                break;
+            }
             break;
         case "wp1":case "wp2":case "wp3":case "wp4":case "wp5":case "wp6":case "wp7":case "wp8":
-            if(((droppedY - draggedY) === -1) && (droppedX === draggedX) && (draggedOver.isOccupied ===false)){
+            if(((droppedY - draggedY) === -1) && (droppedX === draggedX) && (isSquarempty)){
                 isLegalMoveBool = true;
+                currentObject.status = 2;
+                break;
             }
-            if ((((droppedY - draggedY) === -2)) && (currentObject.status ===1) && (droppedX === draggedX)){
+            if ((((droppedY - draggedY) === -2)) && (currentObject.status ===1) && (droppedX === draggedX) && (isSquarempty)){
                 isLegalMoveBool = true;
+                currentObject.status = 2;
+                break;
             }
-            currentObject.status = 2;
+            if(((droppedY - draggedY) === -1) && (((droppedX - draggedX) ===1) || ((droppedX - draggedX) ===-1)) && !isSquarempty){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
+                break;
+            }
             break;
+        case "wk1":case "wk2":case "bk1":case "bk2":
+            if(((droppedX - draggedX) ===2) && (((droppedY - draggedY)===1) || ((droppedY-draggedY)===-1))){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
+                break;
+            }
+            if(((droppedX - draggedX) ===-2) && (((droppedY - draggedY)===1) || ((droppedY-draggedY)===-1))){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
+                break;
+            }
+            if(((droppedY - draggedY) ===2) && (((droppedX - draggedX)===1) || ((droppedX-draggedX)===-1))){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
+                break;
+            }
+            if(((droppedY - draggedY) ===-2) && (((droppedX - draggedX)===1) || ((droppedX-draggedX)===-1))){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
+                break;
+            }
+            break;
+        case "bb1":case "bb2":case "wb1":case "wb2":
+            if(((droppedY - draggedY) === (droppedX - draggedX)) || ((droppedY - draggedY) === (droppedX - draggedX)*(-1)) ){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
+                break;
+            }
+
     }
     return isLegalMoveBool;
+}
+
+function allowDrop(object1, object2) {
+    if((object2 !== undefined && object2 !==null)) {
+        if (object1.playerId !== object2.playerId) {
+            document.getElementById(object2.figureID).remove();
+        }
+        else{
+            return false;
+        }
+    }
+
 }
 
