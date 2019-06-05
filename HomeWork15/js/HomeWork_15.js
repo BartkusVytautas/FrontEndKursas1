@@ -314,10 +314,9 @@ function dragStartHandler() {
              currentObject = getFigureObject(figureId);
             for (var k = 0; k < board.length; k++){
                 for (var m =0; m<board[k].length;m++){
-                    draggedFromSquare = board[k][m];
-
-                    if (draggedFromSquare.position === currentObject.position){
-                        draggedFromSquare.isOccupied = false;
+                    var squares = board[k][m];
+                    if (squares.position === currentObject.position){
+                        draggedFromSquare = board[k][m];
                         draggedX=m;
                         draggedY=k;
                         break;
@@ -365,24 +364,23 @@ function dropHandler() {
                         droppedOnSquare = board[j][l];
                         droppedX = l;
                         droppedY = j;
-                        if (!isLegalMove(currentObject.figureID)){
-                            return false;
-                        }
+                        draggedOver = getDraggedOverObject(droppedOnSquare.position);
                         isDropAllowed = !droppedOnSquare.isOccupied;
-                        if (!isDropAllowed){
-                             draggedOver = getDraggedOverObject(droppedOnSquare.position);
-                            if(draggedOver.playerId !== currentObject.playerId){
-                                document.getElementById(draggedOver.figureID).remove();
-                            }else{
-                                return false;
+                            if (!isDropAllowed ) {
+                                if (currentObject.playerId !== draggedOver.playerId) {
+                                    document.getElementById(draggedOver.figureID).remove();
+                                } else {
+                                    return false;
+                                }
                             }
-                        }
+
                         var data = e.dataTransfer.getData("Text");
                         square.appendChild(document.getElementById(data));
                         board[j][l].isOccupied = true;
+                        draggedFromSquare.isOccupied = false;
                         currentObject.position = board[j][l].position;
                         turnCounter++;
-                        console.log(droppedX + " " + draggedX);
+
                     }
                 }
             }
@@ -403,9 +401,7 @@ function isLegalMove(figureId){
             isLegalMoveBool = true;
             }
             currentObject.status = 2;
-            if ((((droppedX - draggedX) ===1) || ((droppedX - draggedX) === -1) && (draggedOver.isOccupied === true))){
-                isLegalMoveBool = true;
-            }
+
             break;
         case "wp1":case "wp2":case "wp3":case "wp4":case "wp5":case "wp6":case "wp7":case "wp8":
             if(((droppedY - draggedY) === -1) && (droppedX === draggedX) && (draggedOver.isOccupied ===false)){
