@@ -267,7 +267,6 @@ var squareArray = document.getElementsByClassName('square');
 
 var currentObject = null;
 var figureId = "";
-var isDropAllowed = false;
 var turnCounter = 0;
 
 
@@ -346,6 +345,7 @@ var draggedOver = null;
 var droppedX = 0;
 var droppedY = 0;
 var isSquarempty = false;
+var isDropAllowed = true;
 function dropHandler() {
     for(var i = 0; i < squareArray.length; i++){
         let square = squareArray[i];
@@ -368,6 +368,9 @@ function dropHandler() {
                         draggedOver = getDraggedOverObject(droppedOnSquare.position);
                         isSquarempty = !droppedOnSquare.isOccupied;
                         if(!isLegalMove(currentObject.figureID, currentObject, draggedOver )){
+                            return false;
+                        }
+                        if (!isDropAllowed){
                             return false;
                         }
                         var data = e.dataTransfer.getData("Text");
@@ -452,9 +455,12 @@ function isLegalMove(figureId, object1, object2){
             break;
         case "bb1":case "bb2":case "wb1":case "wb2":
             if(((droppedY - draggedY) === (droppedX - draggedX)) || ((droppedY - draggedY) === (droppedX - draggedX)*(-1)) ){
-                isLegalMoveBool = true;
-                allowDrop(object1, object2);
-                break;
+                for(var z = 0; z < squareArray.length;z++) {
+
+                    isLegalMoveBool = true;
+                    allowDrop(object1, object2);
+                    break;
+                }
             }
 
     }
@@ -464,10 +470,11 @@ function isLegalMove(figureId, object1, object2){
 function allowDrop(object1, object2) {
     if((object2 !== undefined && object2 !==null)) {
         if (object1.playerId !== object2.playerId) {
+            isDropAllowed = true;
             document.getElementById(object2.figureID).remove();
         }
         else{
-            return false;
+            isDropAllowed =  false;
         }
     }
 
