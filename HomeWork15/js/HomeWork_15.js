@@ -479,4 +479,18 @@ function allowDrop(object1, object2) {
     }
 
 }
+// droppedX = j;
+// droppedY = i;
+// draggedX=i;
+// draggedY=j;
+function canJumpOverDiagonal (){
+    for(var i = 0; i<board.length; i++){
+        for(var j = 0; j < board.length[i];j++){
+            
+
+
+        }
+
+    }
+}
 
