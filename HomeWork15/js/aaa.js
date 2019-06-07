@@ -284,10 +284,10 @@ function dragStart (ev){
 function getFigureObject (figureId){
     var x;
     for (x in figures){
-       if(figures[x].figureID === figureId){
-           var draggedObject = figures[x];
-           break;
-       }
+        if(figures[x].figureID === figureId){
+            var draggedObject = figures[x];
+            break;
+        }
     }
     return draggedObject;
 }
@@ -310,14 +310,14 @@ function dragStartHandler() {
     for (var j = 0; j < figuresArray.length; j++) {
         figuresArray[j].addEventListener('dragstart', function (e) {
             dragStart(e);
-             currentObject = getFigureObject(figureId);
+            currentObject = getFigureObject(figureId);
             for (var k = 0; k < board.length; k++){
                 for (var m =0; m<board[k].length;m++){
                     var squares = board[k][m];
                     if (squares.position === currentObject.position){
                         draggedFromSquare = board[k][m];
-                        draggedX=m+1;
-                        draggedY=k+1;
+                        draggedX=m;
+                        draggedY=k;
                         break;
                     }
                 }
@@ -369,8 +369,8 @@ function dropHandler() {
 
                     if (square.getAttribute('id') === board[j][l].position){
                         droppedOnSquare = board[j][l];
-                        droppedX = l+1;
-                        droppedY = j+1;
+                        droppedX = l;
+                        droppedY = j;
                         deltaX = droppedX - draggedX;
                         deltaY = droppedY - draggedY;
                         if(deltaX < 0){
@@ -393,7 +393,6 @@ function dropHandler() {
                             maxY = droppedY;
                             minY = draggedY;
                         }
-
                         draggedOver = getDraggedOverObject(droppedOnSquare.position);
                         isSquarempty = !droppedOnSquare.isOccupied;
                         if(!isLegalMove(currentObject.figureID, currentObject, draggedOver )){
@@ -421,7 +420,9 @@ function dropHandler() {
     }
 }
 
+
 var isLegalMoveBool = null;
+
 function isLegalMove(figureId, object1, object2){
     isLegalMoveBool = false;
     switch (figureId) {
@@ -430,7 +431,7 @@ function isLegalMove(figureId, object1, object2){
             if(((droppedY - draggedY) === 1) && (droppedX === draggedX) && (isSquarempty)){
                 isLegalMoveBool = true;
                 currentObject.status = 2;
-            break;
+                break;
             }
             if ((((droppedY - draggedY) === 2) && (droppedX === draggedX)) && (currentObject.status ===1) && (isSquarempty)){
                 isLegalMoveBool = true;
@@ -480,34 +481,64 @@ function isLegalMove(figureId, object1, object2){
                 isLegalMoveBool = true;
                 allowDrop(object1, object2);
                 break;
+
             }
             break;
         case "bb1":case "bb2":case "wb1":case "wb2":
             if((deltaX === deltaY) && canJumpOverDiagonal()){
                 isLegalMoveBool = true;
                 allowDrop(object1, object2);
+            }
+            break;
+
+        case "wk":case "bk":
+            if((deltaX < 2) && (deltaY < 2)){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
                 break;
             }
+            break;
+        case "br1":case "br2":case "wr1":case "wr2":
+            if(((deltaX === 0) || (deltaY === 0)) && canJumpOverStraight()){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
+                break;
+            }
+            break;
+        case "bq":case "wq":
+            if((((deltaX === 0) || (deltaY === 0)) && canJumpOverStraight()) || ((((droppedY - draggedY) === (droppedX - draggedX)) || ((droppedY - draggedY) === (droppedX - draggedX)*(-1))) && canJumpOverDiagonal())){
+                isLegalMoveBool = true;
+                allowDrop(object1, object2);
+                break;
+            }
+            break;
+
+
 
     }
     return isLegalMoveBool;
 }
 
 function allowDrop(object1, object2) {
-    if ((object2 !== undefined && object2 !== null)) {
+    if((object2 !== undefined && object2 !==null)) {
         if (object1.playerId !== object2.playerId) {
             isDropAllowed = true;
             document.getElementById(object2.figureID).remove();
-        } else {
-            isDropAllowed = false;
+        }
+        else{
+            isDropAllowed =  false;
         }
     }
+
 }
+// droppedX = j;
+// droppedY = i;
+// draggedX=i;
+// draggedY=j;
 
 function canJumpOverDiagonal () {
     for (var k = minX +1; k < maxX;){
         for (var l = minY +1; l < maxY; l++){
-            console.log(board[l][k]);
             if (board[l][k].isOccupied){
                 return  false;
             }
@@ -515,5 +546,23 @@ function canJumpOverDiagonal () {
         }
     }
     return  true;
+}
+
+function canJumpOverStraight(){
+    if (deltaY === 0){
+        for (var i = minX + 1; i < maxX; i++){
+            if (board[draggedY][i].isOccupied){
+                return false;
+            }
+        }
+    }
+    if(deltaX === 0){
+        for (var j = minY +1; j < maxY; j++){
+            if(board[j][draggedX].isOccupied){
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
