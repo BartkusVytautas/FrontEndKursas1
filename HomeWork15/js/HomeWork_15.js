@@ -269,7 +269,10 @@ var currentObject = null;
 var figureId = "";
 var turnCounter = 0;
 
-
+/**
+ * Dragsart function and getting figure ID
+ * @param ev
+ */
 function dragStart (ev){
     ev.dataTransfer.setData("text/plain", ev.target.id);
     figureId = ev.target.getAttribute('id');
@@ -292,12 +295,17 @@ function getFigureObject (figureId){
     return draggedObject;
 }
 
-
+/**
+ * Gets a figure object, which is being dropped on by other figure
+ * @param figurePosition {String}
+ * @returns {object}
+ */
+var draggedOverObject = null;
 function getDraggedOverObject(figurePosition) {
     var y;
     for (y in figures){
         if(figures[y].position === figurePosition){
-            var draggedOverObject = figures[y];
+            draggedOverObject = figures[y];
             break;
         }
     }
@@ -306,13 +314,17 @@ function getDraggedOverObject(figurePosition) {
 var draggedX = 0;
 var draggedY = 0;
 var draggedFromSquare = null;
+
+/**
+ *Drag start handler function
+ */
 function dragStartHandler() {
     for (var j = 0; j < figuresArray.length; j++) {
         figuresArray[j].addEventListener('dragstart', function (e) {
             dragStart(e);
             currentObject = getFigureObject(figureId);
             for (var k = 0; k < board.length; k++){
-                for (var m =0; m<board[k].length;m++){
+                for (var m =0; m < board[k].length;m++){
                     var squares = board[k][m];
                     if (squares.position === currentObject.position){
                         draggedFromSquare = board[k][m];
@@ -326,6 +338,9 @@ function dragStartHandler() {
     }
 }
 
+/**
+ * Drag over handler
+ */
 function dragOverHandler () {
     for (var i = 0; i < squareArray.length; i++){
         squareArray[i].addEventListener('dragover', function(e){
@@ -352,6 +367,10 @@ var maxX = 0;
 var minX = 0;
 var maxY = 0;
 var minY = 0;
+
+/**
+ * Drop handler function
+ */
 function dropHandler() {
     for(var i = 0; i < squareArray.length; i++){
         let square = squareArray[i];
@@ -421,10 +440,15 @@ function dropHandler() {
 }
 
 
-var isLegalMoveBool = null;
-
+/**
+ * Function to determine if a move is legal
+ * @param figureId {String}
+ * @param object1 {object}
+ * @param object2 {object}
+ * @returns {boolean}
+ */
 function isLegalMove(figureId, object1, object2){
-    isLegalMoveBool = false;
+    var isLegalMoveBool = false;
     switch (figureId) {
         case "bp1":case "bp2":case "bp3":case "bp4":case "bp5":case "bp6":case "bp7":case "bp8":
 
@@ -488,6 +512,7 @@ function isLegalMove(figureId, object1, object2){
             if((deltaX === deltaY) && canJumpOverDiagonal()){
                 isLegalMoveBool = true;
                 allowDrop(object1, object2);
+                break;
             }
             break;
 
@@ -519,11 +544,28 @@ function isLegalMove(figureId, object1, object2){
     return isLegalMoveBool;
 }
 
+/**Function to determine if it is possible to drop the dragged figure on other figure and delete the
+ * figure if its allowed
+ *
+ * @param object1 {object}
+ * @param object2 {object}
+ */
 function allowDrop(object1, object2) {
-    if((object2 !== undefined && object2 !==null)) {
+    if((object2 !== undefined && object2 !== null)) {
         if (object1.playerId !== object2.playerId) {
             isDropAllowed = true;
+            if(object2.figureID === "wk"){
+                document.getElementById('chess-table').style.setProperty('display', 'none', 'important');
+                document.getElementById('turn-color').style.setProperty('display', 'none', 'important');
+                alert("Player 1 won");
+            }
+            if(object2.figureID === "bk"){
+                document.getElementById('chess-table').style.setProperty('display', 'none', 'important');
+                document.getElementById('turn-color').style.setProperty('display', 'none', 'important');
+                alert("Player 2 won");
+            }
             document.getElementById(object2.figureID).remove();
+
         }
         else{
             isDropAllowed =  false;
@@ -532,10 +574,15 @@ function allowDrop(object1, object2) {
 
 }
 
+/**
+ * A function  to determine if a diagonal move is legal and  doesnt contain any figures between dragged position and dropped position
+ * @returns {boolean}
+ */
 function canJumpOverDiagonal () {
     if((((droppedX - draggedX) > 0) && (droppedY - draggedY) > 0) || (((droppedX - draggedX) < 0) && (droppedY - draggedY) < 0)){
     for (var k = minX +1; k < maxX;) {
         for (var l = minY + 1; l < maxY; l++) {
+            console.log(board[l][k]);
             if (board[l][k].isOccupied) {
                 return false;
             }
@@ -546,15 +593,21 @@ function canJumpOverDiagonal () {
     if (((droppedX - draggedX) + (droppedY - draggedY)) === 0){
         for (var n = maxX -1; n > minX;){
             for( var o = minY +1; o < maxY; o++){
+                console.log(board[o][n]);
                 if (board[o][n].isOccupied){
                     return false;
                 }
+                n--;
             }
         }
     }
     return  true;
 }
 
+/**
+ * A function to determine if a straight mobe i slegal and doesnt contain any figures between dropped and dragged positions
+ * @returns {boolean}
+ */
 function canJumpOverStraight(){
     if (deltaY === 0){
         for (var i = minX + 1; i < maxX; i++){
