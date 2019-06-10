@@ -16,7 +16,7 @@ function startTheGame() {
 
 /**
  * Chess board
- * @type {*[object}
+ * @type {array}
  */
 var board = [
     [{position: "A8", isOccupied: true}, {position: "B8", isOccupied: true}, {position: "C8", isOccupied: true}, {position: "D8", isOccupied:true}, {position:"E8", isOccupied: true}, {position:"F8", isOccupied: true}, {position: "G8", isOccupied: true}, {position: "H8", isOccupied: true}],

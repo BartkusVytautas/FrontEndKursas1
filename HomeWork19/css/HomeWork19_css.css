@@ -1,0 +1,17 @@
+html, body{
+    height: 100%;
+}
+
+
+.row{
+    height: 120px;
+}
+
+a{
+    font-size: 50px !important;
+}
+
+
+.round{
+    height: 20%;
+}
