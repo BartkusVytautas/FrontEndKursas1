@@ -10,14 +10,14 @@
 
 
 table{
-    width: 900px;
+    width: 800px;
     margin: auto;
     border-collapse: collapse;
 }
 
 td.square{
-    width: 100px;
-    height: 100px;
+    width: 88.89px;
+    height: 88.89px;
     border: none;
     text-align: center;
 
@@ -37,7 +37,7 @@ h1{
 }
 
 i{
-    font-size: 90px;
+    font-size: 70px;
     opacity: 0.99;
     display: none !important;
 

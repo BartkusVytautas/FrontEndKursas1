@@ -605,7 +605,7 @@ function canJumpOverDiagonal () {
 }
 
 /**
- * A function to determine if a straight mobe i slegal and doesnt contain any figures between dropped and dragged positions
+ * A function to determine if a straight move is legal and doesnt contain any figures between dropped and dragged positions
  * @returns {boolean}
  */
 function canJumpOverStraight(){
